@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+html, body, app-root, .app-frame {
+    overflow: auto;
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 2em;
+    box-sizing: border-box;
+}
