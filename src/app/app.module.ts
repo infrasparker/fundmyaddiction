@@ -27,6 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { TitleBarComponent } from './title-bar/title-bar.component';
 import { CasinoComponent } from './casino/casino.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { PlayerService } from './player/player.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { AppRoutingModule } from './/app-routing.module';
     MatSidenavModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

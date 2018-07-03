@@ -7,6 +7,14 @@ export class Player {
         this.credits = credits;
     }
 
+    public getName(): string {
+        return this.name;
+    }
+
+    public getCredits(): number {
+        return this.credits;
+    }
+
     /**
      * Attempts to add or subtract the given value to the player's credits.
      * @param credits The amount of credits to change, either positively or negatively.

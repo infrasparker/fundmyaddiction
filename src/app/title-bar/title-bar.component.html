@@ -1,8 +1,15 @@
-<mat-toolbar color="primary" fxLayout="row">
-  <div fxFlex="3em">
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center">
+  <div fxFlex="55px">
     <button mat-icon-button (click)="onMenuClick()">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
-  Fund My Addiction
+  <div fxFlex="100%">
+    Fund My Addiction
+  </div>
+
+  <div fxFlex="5em" fxLayoutAlign="space-between center">
+    <mat-icon>attach_money</mat-icon>
+    {{ player.getCredits() }}
+  </div>
 </mat-toolbar>
