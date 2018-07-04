@@ -2,7 +2,7 @@ export class Player {
     private name: string;
     private credits: number;
 
-    constructor(name: string, credits: number = 0) {
+    constructor(name: string, credits: number = 100) {
         this.name = name;
         this.credits = credits;
     }
