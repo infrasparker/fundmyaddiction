@@ -10,16 +10,18 @@ import { Player } from '../player/player.model';
 export class TitleBarComponent implements OnInit {
   @Output() menuClick = new EventEmitter();
   player: Player;
+  from: number;
+  to: number;
 
   constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
     this.player = this.playerService.player;
-    console.log(this.player);
-    // this.playerService.updated.subscribe((resp) => {
-    //   this.player = resp;
-    //   console.log(resp);
-    // })
+    this.playerService.updated.subscribe((resp: Player) => {
+      this.from = this.player.getCredits();
+      this.to = resp.getCredits();
+      this.player = resp;
+    })
   }
 
   onMenuClick(): void {

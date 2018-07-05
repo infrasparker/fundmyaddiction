@@ -22,6 +22,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
+// Counter
+import { CountUpModule } from 'countup.js-angular2';
+
 // Components
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -30,6 +33,7 @@ import { TitleBarComponent } from './title-bar/title-bar.component';
 import { CasinoComponent } from './casino/casino.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { PlayerService } from './player/player.service';
+import { SlotsComponent } from './casino/slots/slots.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { PlayerService } from './player/player.service';
     SidebarComponent,
     ProfileComponent,
     TitleBarComponent,
-    CasinoComponent
+    CasinoComponent,
+    SlotsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,9 @@ import { PlayerService } from './player/player.service';
     MatButtonToggleModule,
     MatIconModule,
     MatSidenavModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    CountUpModule
   ],
   providers: [PlayerService],
   bootstrap: [AppComponent]
