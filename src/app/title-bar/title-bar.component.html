@@ -8,8 +8,8 @@
     Fund My Addiction
   </div>
 
-  <div id="credits" fxFlex="5em" fxLayoutAlign="right center">
+  <div id="credits" fxLayoutAlign="right center">
     <mat-icon>attach_money</mat-icon>
-    {{ player.getCredits() }}
+    <div countUp [endVal]="endVal" [duration]=".75"></div>
   </div>
 </mat-toolbar>

@@ -20,7 +20,7 @@ export class SlotsComponent implements OnInit {
   }
 
   onSlotsClick(): void {
-    this.playerService.addCredits(100);
+    this.playerService.addCredits(Math.random() * 100 - 40);
   }
 
 }
