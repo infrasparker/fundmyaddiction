@@ -1,5 +1,18 @@
 <mat-card fxFlexFill fxLayout="column" fxLayoutAlign="start center">
   <h3>Slots</h3>
   <mat-divider [inset]="true"></mat-divider>
+  <mat-form-field fxLayoutAlign="start center">
+    <mat-icon id="money_prefix" matPrefix>attach_money</mat-icon>
+    <input matInput
+      placeholder="Bet"
+      [(ngModel)]="bet"
+      type="number"
+      min="0"
+      [max]="player.getCredits()"
+      [formControl]="betFormControl">
+      <mat-error>
+        Test
+      </mat-error>
+  </mat-form-field>
   <button mat-raised-button color="primary" (click)="onSlotsClick()">Test</button>
 </mat-card>
