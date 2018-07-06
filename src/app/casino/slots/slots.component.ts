@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../../player/player.model';
 import { PlayerService } from '../../player/player.service';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-slots',
@@ -13,16 +13,25 @@ export class SlotsComponent implements OnInit {
   bet: number;
   betFormControl: FormControl;
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService) {
+  }
 
   ngOnInit() {
     this.player = this.playerService.player;
-    this.betFormControl = new FormControl("", [Validators.max(this.player.getCredits()), Validators.min(0)]);
+    this.betFormControl = new FormControl("", this.validationArr());
     this.playerService.updated.subscribe((resp: Player) => {
       this.player = resp;
-      this.bet = Math.min(this.bet, this.player.getCredits());
-      this.betFormControl.setValidators([Validators.max(this.player.getCredits()), Validators.min(0)]);
+      this.bet = Math.min(this.bet || 1, this.player.getCredits());
+      this.betFormControl.setValidators(this.validationArr());
     })
+  }
+
+  private validationArr(): ValidatorFn[] {
+    return [
+      Validators.required,
+      Validators.max(this.player.getCredits()),
+      Validators.min(1)
+    ];
   }
 
   onSlotsClick(): void {

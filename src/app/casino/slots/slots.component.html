@@ -6,13 +6,22 @@
     <input matInput
       placeholder="Bet"
       [(ngModel)]="bet"
-      type="number"
-      min="0"
+      pattern="[0-9]*"
+      min="1"
       [max]="player.getCredits()"
       [formControl]="betFormControl">
-      <mat-error>
-        Test
-      </mat-error>
+    <mat-error *ngIf="betFormControl.hasError('required')">
+      Bet is required
+    </mat-error>
+    <mat-error *ngIf="betFormControl.hasError('pattern') && !betFormControl.hasError('required')">
+      Must enter a numeric value
+    </mat-error>
+    <mat-error *ngIf="betFormControl.hasError('min') && !betFormControl.hasError('required')">
+      Must bet at least 1 credit to play
+    </mat-error>
+    <mat-error *ngIf="betFormControl.hasError('max') && !betFormControl.hasError('required')">
+      Not enough credits
+    </mat-error>
   </mat-form-field>
   <button mat-raised-button color="primary" (click)="onSlotsClick()">Test</button>
 </mat-card>
