@@ -4,12 +4,18 @@
       <h3>Coin Flip</h3>
       <mat-divider [inset]="true"></mat-divider>
       <div>
-      <mat-form-field>
-          <input matInput type="number" placeholder="Amount to Bet" required>
-
-          <input matInput type="submit">
-      </mat-form-field>
+        <mat-form-field>
+            <input matInput #amount type="number" placeholder="Amount to Bet" required>
+        </mat-form-field>
       </div>
+      <div>
+        <form fxLayoutGap="1em">
+          <input type="button" value="Heads" (click)="onFlipClick(amount.value, true)">
+          <input type="button" value="Tails" (click)="onFlipClick(amount.value, false)">
+        </form>
+      </div>
+      <br>
+      {{message}}
     </mat-card>
     
   </div>
