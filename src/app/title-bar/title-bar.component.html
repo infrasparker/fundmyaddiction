@@ -10,6 +10,6 @@
 
   <div id="credits" fxLayoutAlign="right center">
     <mat-icon>attach_money</mat-icon>
-    <div countUp [endVal]="endVal" [duration]=".75"></div>
+    <div countUp [startVal]="player.getCredits()" [endVal]="endVal" [duration]=".75"></div>
   </div>
 </mat-toolbar>

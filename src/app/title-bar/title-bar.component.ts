@@ -12,14 +12,16 @@ export class TitleBarComponent implements OnInit {
   player: Player;
   endVal: number;
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService) {
+    this.player = this.playerService.player;
+    this.endVal = this.player.getCredits();
+  }
 
   ngOnInit() {
-    this.player = this.playerService.player;
     this.playerService.updated.subscribe((resp: Player) => {
       this.endVal = resp.getCredits();
       this.player = resp;
-    })
+    });
   }
 
   onMenuClick(): void {
