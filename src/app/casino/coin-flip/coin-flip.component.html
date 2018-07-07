@@ -1,0 +1,17 @@
+<mat-card fxFlex="20em" fxLayout="column" fxLayoutAlign="start center">
+  <h3>Coin Flip</h3>
+  <mat-divider [inset]="true"></mat-divider>
+  <div>
+    <mat-form-field>
+        <input matInput [(ngModel)]="numBet" type="number" placeholder="Amount to Bet" required>
+    </mat-form-field>
+  </div>
+  <div fxLayoutGap="1em"> 
+    <button mat-raised-button (click)="onFlipClick(true)" color="primary"> Heads </button>
+    <button mat-raised-button (click)="onFlipClick(false)" color="primary"> Tails </button>
+  </div>
+  <br>
+  {{ message }}
+  <br>
+  {{ flip }}
+</mat-card>

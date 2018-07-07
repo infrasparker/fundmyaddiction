@@ -1,25 +1,5 @@
 <div class="container" fxFlexFill fxLayout="column" fxLayoutGap="2em">
   <div fxFlex="50%" fxLayoutAlign="space-between">
-    <mat-card fxFlex="20em" fxLayout="column" fxLayoutAlign="start center">
-      <h3>Coin Flip</h3>
-      <mat-divider [inset]="true"></mat-divider>
-      <div>
-        <mat-form-field>
-            <input matInput #amount type="number" placeholder="Amount to Bet" required>
-        </mat-form-field>
-      </div>
-      <div>
-        <form fxLayoutGap="1em">
-          <input type="button" value="Heads" (click)="onFlipClick(amount.value, true)">
-          <input type="button" value="Tails" (click)="onFlipClick(amount.value, false)">
-        </form>
-      </div>
-      <br>
-      {{message}}
-    </mat-card>
-    
+      <app-coin-flip fxFlex="20em"></app-coin-flip>
   </div>
-<!--<div fxFlex="50%" fxLayoutAlign="space-between">
-    <mat-card fxFlex="20em"></mat-card>
-  </div>*-->
 </div>

@@ -28,6 +28,7 @@ import { TitleBarComponent } from './title-bar/title-bar.component';
 import { CasinoComponent } from './casino/casino.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { PlayerService } from './player/player.service';
+import { CoinFlipComponent } from './casino/coin-flip/coin-flip.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PlayerService } from './player/player.service';
     SidebarComponent,
     ProfileComponent,
     TitleBarComponent,
-    CasinoComponent
+    CasinoComponent,
+    CoinFlipComponent
   ],
   imports: [
     BrowserModule,
