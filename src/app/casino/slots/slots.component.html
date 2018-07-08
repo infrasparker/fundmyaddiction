@@ -23,6 +23,8 @@
       Not enough credits
     </mat-error>
   </mat-form-field>
-  <div id="slots_box" fxFlex="auto"></div>
+  <div id="slots_box" fxFlex="auto">
+    {{ result }}
+  </div>
   <button mat-raised-button color="primary" (click)="onSlotsClick()" [disabled]="betFormControl.invalid">Test</button>
 </mat-card>

@@ -12,13 +12,14 @@ export class SlotsComponent implements OnInit {
   player: Player;
   bet: number;
   betFormControl: FormControl;
+  result: string;
 
-  constructor(private playerService: PlayerService) {
-  }
+  constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
     this.player = this.playerService.player;
     this.betFormControl = new FormControl("", this.validationArr());
+    this.result = "";
     this.playerService.updated.subscribe((resp: Player) => {
       this.player = resp;
       this.bet = Math.min(this.bet || 1, this.player.getCredits());
@@ -35,8 +36,15 @@ export class SlotsComponent implements OnInit {
   }
 
   onSlotsClick(): void {
-    let x: number = Math.floor(Math.random() * 100) - 40;
-    this.playerService.addCredits(x);
+    this.result = "";
+    this.playerService.addCredits(-this.bet);
+    for (let n: number = 0; n < 3; n++) {
+      this.result += Math.floor(Math.random() * 10);
+    }
+    if (this.result[0] === this.result[1] && this.result[1] === this.result[2])
+      this.playerService.addCredits(this.bet * 10);
+    else if (this.result[0] === this.result[1] || this.result[1] === this.result[2] || this.result[0] === this.result[2])
+      this.playerService.addCredits(this.bet * 5);
   }
 
 }
