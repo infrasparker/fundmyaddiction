@@ -18,19 +18,10 @@ export class TitleBarComponent implements OnInit {
   }
 
   ngOnInit() {
-<<<<<<< HEAD
     this.playerService.updated.subscribe((resp: Player) => {
       this.endVal = resp.getCredits();
       this.player = resp;
     });
-=======
-    this.player = this.playerService.player;
-    console.log(this.player);
-    this.playerService.updated.subscribe((resp) => {
-      this.player = resp;
-      console.log(resp);
-    })
->>>>>>> coin_flip
   }
 
   onMenuClick(): void {
