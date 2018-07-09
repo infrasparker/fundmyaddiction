@@ -10,6 +10,15 @@
       [max]="player.getCredits()"
       [formControl]="betFormControl"
       required>
+    <mat-error *ngIf="betFormControl.errors?.pattern">
+      Must enter a numeric value
+    </mat-error>
+    <mat-error *ngIf="betFormControl.hasError('min') && !betFormControl.hasError('required') && !betFormControl.errors?.pattern">
+      Must bet at least 1 credit to play
+    </mat-error>
+    <mat-error *ngIf="betFormControl.hasError('max') && !betFormControl.hasError('required') && !betFormControl.errors?.pattern">
+      Not enough credits
+    </mat-error>
   </mat-form-field>
   <div fxLayoutGap="1em"> 
     <button mat-raised-button (click)="onFlipClick(true)" color="primary"> Heads </button>

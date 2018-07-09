@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
 
 // Counter
 import { CountUpModule } from 'countup.js-angular2';
@@ -35,6 +36,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { PlayerService } from './player/player.service';
 import { SlotsComponent } from './casino/slots/slots.component';
 import { CoinFlipComponent } from './casino/coin-flip/coin-flip.component';
+import { InventoryService } from './inventory/inventory.service';
+import { StoreroomComponent } from './guild/storeroom/storeroom.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { CoinFlipComponent } from './casino/coin-flip/coin-flip.component';
     TitleBarComponent,
     CasinoComponent,
     SlotsComponent,
-    CoinFlipComponent
+    CoinFlipComponent,
+    StoreroomComponent
   ],
   imports: [
     BrowserModule,
@@ -68,11 +72,16 @@ import { CoinFlipComponent } from './casino/coin-flip/coin-flip.component';
     MatButtonToggleModule,
     MatIconModule,
     MatSidenavModule,
+    MatTableModule,
+    
     AppRoutingModule,
 
     CountUpModule
   ],
-  providers: [PlayerService],
+  providers: [
+    PlayerService,
+    InventoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
