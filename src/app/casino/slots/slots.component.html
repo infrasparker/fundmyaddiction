@@ -9,10 +9,8 @@
       pattern="-?[0-9]*"
       min="1"
       [max]="player.getCredits()"
-      [formControl]="betFormControl">
-    <mat-error *ngIf="betFormControl.errors?.required">
-      Bet is required
-    </mat-error>
+      [formControl]="betFormControl"
+      required>
     <mat-error *ngIf="betFormControl.errors?.pattern">
       Must enter a numeric value
     </mat-error>

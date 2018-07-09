@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PlayerService } from '../../player/player.service';
 import { Player } from '../../player/player.model';
+import { FormControl, Validators, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-coin-flip',
@@ -23,7 +24,11 @@ export class CoinFlipComponent implements OnInit {
   private numBet: number; //user inputed amount of credits to be bet
   private heads: boolean; //true if the user selected heads, false if not
   private message: string; //display message after a bet
+  betFormControl: FormControl;
 
+  /**
+   * @param playerService Injection of player service
+   */
   constructor(private playerService: PlayerService) { }
   
   /** 
@@ -32,7 +37,7 @@ export class CoinFlipComponent implements OnInit {
    * If so, the bet is executed.
    * @param heads True if the player picked heads, false if not.
    */ 
-  onFlipClick(heads:boolean) {
+  onFlipClick(heads: boolean) {
     if(this.numBet > this.player.getCredits()){
       this.message = "Insufficent Funds!";
     }
@@ -61,11 +66,29 @@ export class CoinFlipComponent implements OnInit {
     }
   }
 
+  /**
+   * Set initial player currency and validate bet requirements.
+   * Subscribe to player service and update player and bet accordingly.
+   * Ascertains that bet never exceeds current currency.
+   */
   ngOnInit() {
     this.player = this.playerService.player;
+    this.betFormControl = new FormControl("", this.validationArr());
     this.playerService.updated.subscribe((resp) => {
       this.player = resp;
+      this.numBet = Math.min(this.numBet || 1, this.player.getCredits());
+      this.betFormControl.setValidators(this.validationArr());
     })
+  }
+
+  /**
+   * Array of ValidatorFn objects to check against bet input.
+   */
+  private validationArr(): ValidatorFn[] {
+    return [
+      Validators.max(this.player.getCredits()),
+      Validators.min(1)
+    ];
   }
 
 }

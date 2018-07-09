@@ -14,8 +14,16 @@ export class SlotsComponent implements OnInit {
   betFormControl: FormControl;
   result: string;
 
+  /**
+   * @param playerService Injection of player service
+   */
   constructor(private playerService: PlayerService) { }
 
+  /**
+   * Set initial player currency and validate bet requirements.
+   * Subscribe to player service and update player and bet accordingly.
+   * Ascertains that bet never exceeds current currency.
+   */
   ngOnInit() {
     this.player = this.playerService.player;
     this.betFormControl = new FormControl("", this.validationArr());
@@ -27,14 +35,19 @@ export class SlotsComponent implements OnInit {
     })
   }
 
+  /**
+   * Array of ValidatorFn objects to check against bet input.
+   */
   private validationArr(): ValidatorFn[] {
     return [
-      Validators.required,
       Validators.max(this.player.getCredits()),
       Validators.min(1)
     ];
   }
 
+  /**
+   * Generate 3 random values and compare them to determine prize.
+   */
   onSlotsClick(): void {
     this.result = "";
     this.playerService.addCredits(-this.bet);
