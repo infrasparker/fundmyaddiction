@@ -1,31 +1,56 @@
-<div class="container" fxFlexFill fxLayout="column" fxLayoutGap="2em">
-  <table mat-table fxFlex="60%" [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef>Amount</th>
-      <td mat-cell *matCellDef="let container">{{ container.amount }}</td> 
-    </ng-container>
+<div class="container" fxFlexFill fxLayout="row" fxLayoutGap="2em">
+  <mat-card fxFlex="60%" fxLayout="column">
+    <mat-toolbar color="accent" class="card-toolbar" fxLayout="row" fxLayoutAlign="space-between center">
+      Guild Inventory
+      <mat-form-field fxFlex="70%" fxFlex.md="60%" fxFlex.lt-md="40%">
+        <mat-icon id="search_prefix" matPrefix>search</mat-icon>
+        <input matInput (keyup)="applyFilter($event.target.value)">
+      </mat-form-field>
+    </mat-toolbar>
 
-    <ng-container matColumnDef="item">
-      <th mat-header-cell *matHeaderCellDef>Item</th>
-      <td mat-cell *matCellDef="let container">{{ container.item.name }}</td> 
-    </ng-container>
+    <mat-table class="table-content" [dataSource]="dataSource" fxFlex="stretch">
+      <ng-container matColumnDef="name">
+        <mat-header-cell fxFlex="auto" *matHeaderCellDef>Item Name</mat-header-cell>
+        <mat-cell fxFlex="auto" *matCellDef="let container">{{ container.item.name }}</mat-cell> 
+      </ng-container>
 
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef>Description</th>
-      <td mat-cell *matCellDef="let container">{{ container.item.description }}</td> 
-    </ng-container>
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let container">{{ container.item.description }}</mat-cell> 
+      </ng-container>
 
-    <ng-container matColumnDef="cost">
-      <th mat-header-cell *matHeaderCellDef>Cost</th>
-      <td mat-cell *matCellDef="let container">{{ container.item.cost }}</td> 
-    </ng-container>
+      <ng-container matColumnDef="cost">
+        <mat-header-cell fxFlex="10%" fxLayoutAlign="center center" *matHeaderCellDef>Cost</mat-header-cell>
+        <mat-cell fxFlex="10%" fxLayoutAlign="center center" *matCellDef="let container">{{ container.item.cost }}</mat-cell> 
+      </ng-container>
 
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef>Weight</th>
-      <td mat-cell *matCellDef="let container">{{ container.item.weight }}</td> 
-    </ng-container>
+      <ng-container matColumnDef="weight">
+        <mat-header-cell fxFlex="10%" fxFlex.lt-md="15%" fxLayoutAlign="center center" *matHeaderCellDef>Weight</mat-header-cell>
+        <mat-cell fxFlex="10%" fxFlex.lt-md="15%" fxLayoutAlign="center center" *matCellDef="let container">{{ container.item.weight }}</mat-cell> 
+      </ng-container>
+      
+      <ng-container matColumnDef="amount">
+        <mat-header-cell fxFlex="10%" fxFlex.lt-md="15%" fxLayoutAlign="center center" *matHeaderCellDef>Amount</mat-header-cell>
+        <mat-cell fxFlex="10%" fxFlex.lt-md="15%" fxLayoutAlign="center center" *matCellDef="let container">{{ container.amount }}</mat-cell> 
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+      <ng-container matColumnDef="details">
+          <mat-header-cell fxFlex="15%" fxFlex.lt-md="20%" fxLayoutAlign="center center" *matHeaderCellDef>Details</mat-header-cell>
+          <mat-cell fxFlex="15%" fxFlex.lt-md="20%" fxLayoutAlign="center center" *matCellDef="let container">
+            <button class="select_button" mat-icon-button
+                (click)="onClickItem(container)"
+                [ngClass]="container.item === selectedItem ? 'selected' : null">
+              <mat-icon>chevron_right</mat-icon>
+            </button>
+          </mat-cell> 
+        </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let container; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator class="table-content" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+  </mat-card>
+  <div fxFlex="40%">
+    <app-item *ngIf="selectedItem" [item]="selectedItem"></app-item>
+  </div>
 </div>

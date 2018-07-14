@@ -1,0 +1,6 @@
+.text-box {
+    border: inset 2px grey;
+    padding: 1rem;
+    font-size: .8rem;
+    text-align: center;
+}

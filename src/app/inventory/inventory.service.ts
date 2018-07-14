@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Item } from './item.model';
+import { Item } from './item/item.model';
+import { Weapon } from './item/weapon.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class InventoryService {
     this.addItem(new Item("Test 1", "Test desc", 5, 5), 5);
     this.addItem(new Item("Test 2", "Test desc", 5, 5), 10);
     this.addItem(new Item("Test 1", "Test desc", 5, 5), 20);
+    this.addItem(Weapon.standard_weapon("club"));
   }
 
   public getInventory(): ItemContainer[] {

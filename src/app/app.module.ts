@@ -22,6 +22,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 // Counter
 import { CountUpModule } from 'countup.js-angular2';
@@ -38,6 +39,7 @@ import { SlotsComponent } from './casino/slots/slots.component';
 import { CoinFlipComponent } from './casino/coin-flip/coin-flip.component';
 import { InventoryService } from './inventory/inventory.service';
 import { StoreroomComponent } from './guild/storeroom/storeroom.component';
+import { ItemComponent } from './inventory/item/item.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { StoreroomComponent } from './guild/storeroom/storeroom.component';
     CasinoComponent,
     SlotsComponent,
     CoinFlipComponent,
-    StoreroomComponent
+    StoreroomComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ import { StoreroomComponent } from './guild/storeroom/storeroom.component';
     MatIconModule,
     MatSidenavModule,
     MatTableModule,
+    MatPaginatorModule,
     
     AppRoutingModule,
 

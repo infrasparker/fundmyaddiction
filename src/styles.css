@@ -7,6 +7,6 @@ html, body, app-root, .app-frame {
 }
 
 .container {
-    padding: 2em;
+    padding: 2rem;
     box-sizing: border-box;
 }
