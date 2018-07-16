@@ -41,7 +41,7 @@ export class CoinFlipComponent implements OnInit {
     if(this.numBet > this.player.getCredits()){
       this.message = "Insufficent Funds!";
     }
-    else{
+    else {
       this.onFlip.emit();
       this.heads = heads;
       this.runBet();
@@ -54,9 +54,10 @@ export class CoinFlipComponent implements OnInit {
    * The player's credits are updated accordingly if the bet is won or lost.
    * Corresponding message is displayed.
    */
-  runBet() { 
+  runBet() {
+    console.log(this.numBet);
     let flip: number = Math.floor(Math.random() * 2); // 0  = tails , 1 = heads
-    if( (flip == 1 && this.heads) || (flip == 0 && !this.heads) ){
+    if( (flip === 1 && this.heads) || (flip === 0 && !this.heads) ){
       this.playerService.addCredits(this.numBet);
       this.message = "You Win!";
     }
@@ -74,7 +75,7 @@ export class CoinFlipComponent implements OnInit {
   ngOnInit() {
     this.player = this.playerService.player;
     this.betFormControl = new FormControl("", this.validationArr());
-    this.playerService.updated.subscribe((resp) => {
+    this.playerService.updated.subscribe((resp: Player) => {
       this.player = resp;
       this.numBet = Math.min(this.numBet || 1, this.player.getCredits());
       this.betFormControl.setValidators(this.validationArr());

@@ -4,7 +4,7 @@
   <mat-form-field>
     <input matInput
       placeholder="Bet"
-      [(ngModel)]="bet"
+      [(ngModel)]="numBet"
       pattern="-?[0-9]*"
       min="1"
       [max]="player.getCredits()"
@@ -20,12 +20,14 @@
       Not enough credits
     </mat-error>
   </mat-form-field>
-  <div fxLayoutGap="1em"> 
-    <button mat-raised-button (click)="onFlipClick(true)" color="primary"> Heads </button>
-    <button mat-raised-button (click)="onFlipClick(false)" color="primary"> Tails </button>
+  <div fxFlex="auto">
+    <br>
+    {{ message }}
+    <br>
+    {{ flip }}
   </div>
-  <br>
-  {{ message }}
-  <br>
-  {{ flip }}
+  <div fxLayoutGap="1em"> 
+    <button mat-raised-button (click)="onFlipClick(true)" color="primary" [disabled]="betFormControl.invalid"> Heads </button>
+    <button mat-raised-button (click)="onFlipClick(false)" color="primary" [disabled]="betFormControl.invalid"> Tails </button>
+  </div>
 </mat-card>
