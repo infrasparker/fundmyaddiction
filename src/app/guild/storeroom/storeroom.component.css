@@ -1,5 +1,5 @@
 mat-card {
-    padding: 0% 0% 1em;
+    padding: 0%;
 }
 
 mat-toolbar {
@@ -16,23 +16,23 @@ mat-form-field {
     font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
 }
 
-.table-content {
+/* .table-content {
     padding: 0% 2rem 0%;
     width: 100%;
     box-sizing: border-box;
-}
+} */
 
 mat-row {
-    height: 3em;
-    min-height: 3em;
+    height: 2.5rem;
+    min-height: 2.5rem;
 }
 
 .select_button {
-    min-width: 2em;
-    width: 2em;
-    min-height: 2em;
-    height: 2em;
-    line-height: .5em;
+    min-width: 1.5rem;
+    width: 1.5rem;
+    min-height: 1.5rem;
+    height: 1.5rem;
+    line-height: 0px;
     border: 1px outset rgba(255, 255, 255, 0.5);
     background-color: rgba(255, 255, 255, 0.05);
 }

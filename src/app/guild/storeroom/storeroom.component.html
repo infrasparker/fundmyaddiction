@@ -8,7 +8,7 @@
       </mat-form-field>
     </mat-toolbar>
 
-    <mat-table class="table-content" [dataSource]="dataSource" fxFlex="auto">
+    <mat-table [dataSource]="dataSource" fxFlex="auto">
       <ng-container matColumnDef="name">
         <mat-header-cell fxFlex="auto" *matHeaderCellDef>Item Name</mat-header-cell>
         <mat-cell fxFlex="auto" *matCellDef="let container">{{ container.item.name }}</mat-cell> 
@@ -48,7 +48,7 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let container; columns: displayedColumns;"></mat-row>
     </mat-table>
-    <mat-paginator class="table-content" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
   </mat-card>
   <div fxFlex="40%">
     <app-item *ngIf="selectedItem" [item]="selectedItem"></app-item>

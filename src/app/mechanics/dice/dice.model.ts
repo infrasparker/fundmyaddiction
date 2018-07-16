@@ -1,16 +1,12 @@
 export class Dice {
     public amount: number;
     public faces: number;
-    public bonus: number;
-    public naturalAverage: number;
     public average: number;
 
-    constructor(amount: number, faces: number, bonus: number = 0) {
+    constructor(amount: number, faces: number) {
         this.amount = amount;
         this.faces = faces;
-        this.bonus = bonus;
-        this.naturalAverage = Math.floor(Dice.average(this.amount, this.faces));
-        this.average = this.naturalAverage + this.bonus;
+        this.average = Math.floor(Dice.average(this.amount, this.faces));
     }
 
     public roll(bonus: number = 0): number {
@@ -18,7 +14,7 @@ export class Dice {
     }
 
     public roll_AllInfo(bonus: number = 0): Roll {
-        return Dice.roll_AllInfo(this.amount, this.faces, this.bonus + bonus);
+        return Dice.roll_AllInfo(this.amount, this.faces, bonus);
     }
 
     public static roll(amount: number, faces: number, bonus: number = 0): number {
