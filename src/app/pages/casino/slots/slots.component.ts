@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from '../../player/player.model';
-import { PlayerService } from '../../player/player.service';
+import { Player } from 'src/app/services/player/player.model';
+import { PlayerService } from 'src/app/services/player/player.service';
 import { FormControl, Validators, ValidatorFn } from '@angular/forms';
 
 @Component({

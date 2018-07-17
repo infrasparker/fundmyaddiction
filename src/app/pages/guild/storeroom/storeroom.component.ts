@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ItemContainer, InventoryService } from '../../inventory/inventory.service';
+import { ItemContainer, InventoryService } from 'src/app/services/inventory/inventory.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Item } from '../../inventory/item/item.model';
+import { Item } from 'src/app/model/item/item.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ItemComponent } from 'src/app/model/item/item.component';
 
 @Component({
   selector: 'app-storeroom',
@@ -19,8 +21,8 @@ export class StoreroomComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private inventoryService: InventoryService) {
-    this.displayedColumns = ["name", "cost", "weight", "amount", "details"];
+  constructor(private inventoryService: InventoryService, private dialog: MatDialog) {
+    this.displayedColumns = ["name", "cost", "weight", "amount"];
     this.dataSource = new MatTableDataSource(this.inventoryService.getInventory());
   }
 
@@ -35,13 +37,13 @@ export class StoreroomComponent implements OnInit {
       return dataStr.indexOf(transformedFilter) !== -1;
     };
     this.dataSource.paginator = this.paginator;
-    this.dataSource.sortingDataAccessor = (item: ItemContainer, property: string) => {
+    this.dataSource.sortingDataAccessor = (container: ItemContainer, property: string) => {
       switch (property) {
-        case "name": return item.item.name;
-        case "description": return item.item.description;
-        case "cost": return item.item.cost;
-        case "weight": return item.item.weight;
-        default: return item[property];
+        case "name": return container.item.name;
+        case "description": return container.item.description;
+        case "cost": return container.item.cost;
+        case "weight": return container.item.weight;
+        default: return container[property];
       }
     };
     this.dataSource.sort = this.sort;
@@ -69,7 +71,11 @@ export class StoreroomComponent implements OnInit {
   }
 
   onClickItem(container: ItemContainer) {
-    console.log(container);
     this.selectedItem = container.item;
+    const dialogRef = this.dialog.open(ItemComponent, {
+      width: '480px',
+      height: '600px',
+      data: container.item
+    });
   }
 }

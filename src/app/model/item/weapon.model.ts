@@ -1,6 +1,6 @@
 import { Item } from "./item.model";
-import { Dice } from "../../mechanics/dice/dice.model";
-import { capitalize, bonus_toString } from "../../functions/functions";
+import { Dice } from "../mechanics/dice/dice.model";
+import { capitalize, bonus_toString } from "../functions/functions";
 
 export class Weapon extends Item {
     public readonly rangeType: WeaponRangeType;
@@ -23,21 +23,17 @@ export class Weapon extends Item {
         this.bonus = bonus;
     }
 
-    public descriptionBox(): string {
-        return "<p>" + capitalize(this.weaponType) + " " + this.rangeType + " weapon.<br>" +
-        "Can add " + this.dex_str(true) + " to hit and damage rolls.</p>" +
-        "<p>" + this.description + "</p>";
-    }
-
     public quickInfoBox(): string {
-        let info: string = "<p><i>" + capitalize(this.rangeType) + " Weapon Attack:</i>";
+        let info: string = "<p>" + capitalize(this.weaponType) + " " + this.rangeType + " weapon" +
+        (this.finesse ? "<br>Finesse</p>": "</p>");
+        info += "<p><i>" + capitalize(this.rangeType) + " Weapon Attack:</i>";
         if (this.bonus > 0) {
             info += " +" + this.bonus;
         } else if (this.bonus < 0) {
             info += " -" + this.bonus * -1;
         }
-        info += " + " + this.dex_str() + " + proficiency to hit.</p>";
-        info += "<p><i>Hit:</i>";
+        info += " + " + this.dex_str() + " + proficiency to hit<br>";
+        info += "<i>Hit:</i>";
         this.damage.forEach((value: DamageInfo, key: DamageType) => {
             if (value.dice.amount === 0)
                 info += " 1";
@@ -49,7 +45,7 @@ export class Weapon extends Item {
                 info += " - " + this.bonus * -1;
             info += (value.addMod ? (" + " + this.dex_str()) : "") + " " + key + " damage plus ";
         });
-        info = info.substring(0, info.length - 6) + ".</p>";
+        info = info.substring(0, info.length - 6) + "</p>";
         return info;
     }
 

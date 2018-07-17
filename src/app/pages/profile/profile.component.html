@@ -1,7 +1,7 @@
 <div class="container" fxFlexFill fxLayout="row" fxLayoutAlign="center">
     <mat-card fxFlex="30em">
         <mat-toolbar fxLayoutAlign="center center">
-            Name
+            {{ player.getName() }}
         </mat-toolbar>
         <div fxLayoutAlign="space-between center">
             <div fxLayoutAlign="center center">
@@ -9,7 +9,7 @@
                 Credits
             </div>
             <div>
-                Amount
+                {{ player.getCredits() }}
             </div>
         </div>
     </mat-card>

@@ -23,6 +23,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Counter
 import { CountUpModule } from 'countup.js-angular2';
@@ -30,16 +32,17 @@ import { CountUpModule } from 'countup.js-angular2';
 // Components
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { TitleBarComponent } from './title-bar/title-bar.component';
-import { CasinoComponent } from './casino/casino.component';
+import { CasinoComponent } from './pages/casino/casino.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { PlayerService } from './player/player.service';
-import { SlotsComponent } from './casino/slots/slots.component';
-import { CoinFlipComponent } from './casino/coin-flip/coin-flip.component';
-import { InventoryService } from './inventory/inventory.service';
-import { StoreroomComponent } from './guild/storeroom/storeroom.component';
-import { ItemComponent } from './inventory/item/item.component';
+import { PlayerService } from './services/player/player.service';
+import { SlotsComponent } from './pages/casino/slots/slots.component';
+import { CoinFlipComponent } from './pages/casino/coin-flip/coin-flip.component';
+import { InventoryService } from './services/inventory/inventory.service';
+import { StoreroomComponent } from './pages/guild/storeroom/storeroom.component';
+import { ItemComponent } from './model/item/item.component';
+import { MembersComponent } from './pages/guild/members/members.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,8 @@ import { ItemComponent } from './inventory/item/item.component';
     SlotsComponent,
     CoinFlipComponent,
     StoreroomComponent,
-    ItemComponent
+    ItemComponent,
+    MembersComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +81,8 @@ import { ItemComponent } from './inventory/item/item.component';
     MatSidenavModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
     
     AppRoutingModule,
 
@@ -85,6 +91,9 @@ import { ItemComponent } from './inventory/item/item.component';
   providers: [
     PlayerService,
     InventoryService
+  ],
+  entryComponents: [
+    ItemComponent
   ],
   bootstrap: [AppComponent]
 })

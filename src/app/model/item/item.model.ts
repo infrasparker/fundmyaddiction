@@ -3,6 +3,7 @@ export class Item {
     public readonly description: string;
     public readonly cost: number;
     public readonly weight: number;
+    
 
     constructor(name: string, description: string, cost: number, weight: number) {
         this.name = name;
@@ -20,7 +21,7 @@ export class Item {
     }
     
     public descriptionBox(): string {
-        return this.description;
+        return "<p>" + this.description + "</p>";
     }
 
     public quickInfoBox(): string {

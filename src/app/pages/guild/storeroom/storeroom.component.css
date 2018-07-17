@@ -16,27 +16,18 @@ mat-form-field {
     font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
 }
 
-/* .table-content {
+.table-content {
     padding: 0% 2rem 0%;
     width: 100%;
     box-sizing: border-box;
-} */
+}
 
 mat-row {
     height: 2.5rem;
     min-height: 2.5rem;
+    cursor: pointer;
 }
 
-.select_button {
-    min-width: 1.5rem;
-    width: 1.5rem;
-    min-height: 1.5rem;
-    height: 1.5rem;
-    line-height: 0px;
-    border: 1px outset rgba(255, 255, 255, 0.5);
+mat-row:hover {
     background-color: rgba(255, 255, 255, 0.05);
-}
-
-.selected {
-    background-color: rgba(255, 255, 255, 0.15);
 }

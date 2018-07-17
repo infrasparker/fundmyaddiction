@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Item } from './item/item.model';
-import { Weapon } from './item/weapon.model';
+import { Item } from 'src/app/model/item/item.model';
+import { Weapon } from 'src/app/model/item/weapon.model';
+import { Armor } from 'src/app/model/item/armor.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class InventoryService {
     this.addItem(new Item("Test 1", "Test desc", 5, 5), 5);
     this.addItem(new Item("Test 2", "Test desc", 5, 5), 10);
     this.addItem(new Item("Test 1", "Test desc", 5, 5), 20);
+    this.addItem(Armor.standard_armor("padded"));
     this.addItem(Weapon.standard_weapon("club"));
   }
 
@@ -57,8 +59,4 @@ export class ItemContainer {
   public key(): string {
     return this.item.key();
   }
-
-  // public equals(item: Item): boolean {
-  //     return this.item.equals(item);
-  // }
 }
