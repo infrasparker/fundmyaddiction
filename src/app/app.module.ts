@@ -35,7 +35,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TitleBarComponent } from './title-bar/title-bar.component';
 import { CasinoComponent } from './pages/casino/casino.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { PlayerService } from './services/player/player.service';
 import { SlotsComponent } from './pages/casino/slots/slots.component';
 import { CoinFlipComponent } from './pages/casino/coin-flip/coin-flip.component';

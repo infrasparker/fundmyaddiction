@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Player } from './player.model';
+import { Player } from '../../model/player/player.model';
 
 @Injectable({
   providedIn: 'root'

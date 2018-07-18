@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { PlayerService } from 'src/app/services/player/player.service';
-import { Player } from 'src/app/services/player/player.model';
+import { PlayerService } from '../services/player/player.service';
+import { Player } from '../model/player/player.model';
 
 @Component({
   selector: 'app-title-bar',

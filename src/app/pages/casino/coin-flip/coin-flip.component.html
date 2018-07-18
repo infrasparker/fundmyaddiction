@@ -2,10 +2,11 @@
   <h3>Coin Flip</h3>
   <mat-divider [inset]="true"></mat-divider>
   <mat-form-field>
+    <mat-icon id="money_prefix" matPrefix>attach_money</mat-icon>
     <input matInput
       placeholder="Bet"
-      [(ngModel)]="numBet"
-      pattern="-?[0-9]*"
+      [(ngModel)]="bet"
+      pattern="-?[0-9][0-9]*"
       min="1"
       [max]="player.getCredits()"
       [formControl]="betFormControl"
@@ -21,12 +22,9 @@
     </mat-error>
   </mat-form-field>
   <div fxFlex="auto">
-    <br>
-    {{ message }}
-    <br>
-    {{ flip }}
+    {{ result }}
   </div>
-  <div fxLayoutGap="1em"> 
+  <div fxLayoutGap="1em" fxLayout="row"> 
     <button mat-raised-button (click)="onFlipClick(true)" color="primary" [disabled]="betFormControl.invalid"> Heads </button>
     <button mat-raised-button (click)="onFlipClick(false)" color="primary" [disabled]="betFormControl.invalid"> Tails </button>
   </div>

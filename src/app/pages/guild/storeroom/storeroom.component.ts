@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ItemContainer, InventoryService } from 'src/app/services/inventory/inventory.service';
+import { ItemContainer, InventoryService } from '../../../services/inventory/inventory.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Item } from 'src/app/model/item/item.model';
+import { Item } from '../../../model/item/item.model';
 import { MatDialog } from '@angular/material/dialog';
-import { ItemComponent } from 'src/app/model/item/item.component';
+import { ItemComponent } from '../../../model/item/item.component';
 
 @Component({
   selector: 'app-storeroom',

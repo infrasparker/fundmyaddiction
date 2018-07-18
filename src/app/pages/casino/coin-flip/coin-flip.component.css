@@ -1,8 +1,12 @@
-input[type=number]::-webkit-inner-spin-button, 
+/* input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
-}
+} */
 
 mat-form-field {
   margin-top: 1em;
+}
+
+#money_prefix {
+  vertical-align: middle;
 }

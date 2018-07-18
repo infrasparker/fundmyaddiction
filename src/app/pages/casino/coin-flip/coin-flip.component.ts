@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { PlayerService } from 'src/app/services/player/player.service';
-import { Player } from 'src/app/services/player/player.model';
+import { PlayerService } from '../../../services/player/player.service';
+import { Player } from '../../../model/player/player.model';
 import { FormControl, Validators, ValidatorFn } from '@angular/forms';
 
 @Component({
@@ -19,52 +19,33 @@ export class CoinFlipComponent implements OnInit {
    * Top right credits updated.
    */
 
-  @Output() onFlip = new EventEmitter;
   player: Player;
-  private numBet: number; //user inputed amount of credits to be bet
-  private heads: boolean; //true if the user selected heads, false if not
-  private message: string; //display message after a bet
+  bet: number; //user inputed amount of credits to be bet
+  result: string; //display message after a bet
   betFormControl: FormControl;
 
   /**
    * @param playerService Injection of player service
    */
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService) {
+    this.result = "";
+  }
   
   /** 
    * Runs when either the heads or tails button is clicked.
-   * Checks if there are enough credits to run the bet.
-   * If so, the bet is executed.
-   * @param heads True if the player picked heads, false if not.
-   */ 
-  onFlipClick(heads: boolean) {
-    if(this.numBet > this.player.getCredits()){
-      this.message = "Insufficent Funds!";
-    }
-    else {
-      this.onFlip.emit();
-      this.heads = heads;
-      this.runBet();
-    }
-  }
-
-  /**
    * Generates a random number between 0 and 1 inclusive.
    * 0 represents tails, 1 represents heads.
    * The player's credits are updated accordingly if the bet is won or lost.
    * Corresponding message is displayed.
-   */
-  runBet() {
-    console.log(this.numBet);
-    let flip: number = Math.floor(Math.random() * 2); // 0  = tails , 1 = heads
-    if( (flip === 1 && this.heads) || (flip === 0 && !this.heads) ){
-      this.playerService.addCredits(this.numBet);
-      this.message = "You Win!";
-    }
-    else{
-      this.playerService.addCredits(-this.numBet);
-      this.message = "You Lost!";
-    }
+   * @param heads True if the player picked heads, false if not.
+   */ 
+  onFlipClick(heads: boolean) {
+    this.bet = Number(this.bet);
+    this.result = (Math.floor(Math.random() * 2) === 1) ? "heads" : "tails"; // 0  = tails , 1 = heads
+    if ((this.result === "heads" && heads) || (this.result === "tails" && !heads))
+      this.playerService.addCredits(this.bet);
+    else
+      this.playerService.addCredits(-this.bet);
   }
 
   /**
@@ -77,7 +58,7 @@ export class CoinFlipComponent implements OnInit {
     this.betFormControl = new FormControl("", this.validationArr());
     this.playerService.updated.subscribe((resp: Player) => {
       this.player = resp;
-      this.numBet = Math.min(this.numBet || 1, this.player.getCredits());
+      this.bet = Math.min(this.bet || 1, this.player.getCredits());
       this.betFormControl.setValidators(this.validationArr());
     })
   }
