@@ -43,6 +43,10 @@ import { InventoryService } from './services/inventory/inventory.service';
 import { StoreroomComponent } from './pages/guild/storeroom/storeroom.component';
 import { ItemComponent } from './model/item/item.component';
 import { MembersComponent } from './pages/guild/members/members.component';
+import { MarketComponent } from './pages/market/market.component';
+import { BuyComponent } from './pages/market/buy/buy.component';
+import { SellComponent } from './pages/market/sell/sell.component';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +59,10 @@ import { MembersComponent } from './pages/guild/members/members.component';
     CoinFlipComponent,
     StoreroomComponent,
     ItemComponent,
-    MembersComponent
+    MembersComponent,
+    MarketComponent,
+    BuyComponent,
+    SellComponent
   ],
   imports: [
     BrowserModule,

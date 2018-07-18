@@ -1,0 +1,16 @@
+mat-toolbar {
+    background: transparent;
+}
+
+span.button {
+    top: 1em;
+    right: 2em;
+    position: absolute;
+    display: inline-block;
+    z-index: 2;
+}
+
+.slider {
+    width: 50%;
+
+}

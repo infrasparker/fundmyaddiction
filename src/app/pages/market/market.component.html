@@ -1,0 +1,13 @@
+<div class="container" fxFlexFill fxLayoutGap="2em">
+
+  <mat-drawer-container fxFlexFill>
+    <mat-drawer class="slider" #drawer mode="side" opened position="end" >
+      <app-sell fxFlexFill></app-sell>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-buy (sliderClick)="drawer.toggle()"></app-buy>
+    </mat-drawer-content>
+  </mat-drawer-container>
+  
+
+</div>

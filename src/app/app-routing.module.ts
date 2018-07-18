@@ -5,12 +5,14 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { CasinoComponent } from './pages/casino/casino.component';
 import { StoreroomComponent } from './pages/guild/storeroom/storeroom.component';
 import { MembersComponent } from './pages/guild/members/members.component';
+import { MarketComponent } from './pages/market/market.component';
 
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'casino', component: CasinoComponent },
   { path: 'storeroom', component: StoreroomComponent },
-  { path: 'members', component: MembersComponent }
+  { path: 'members', component: MembersComponent },
+  { path: 'market', component: MarketComponent }
 ]
 
 @NgModule({
