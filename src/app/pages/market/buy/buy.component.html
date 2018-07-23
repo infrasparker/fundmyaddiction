@@ -5,10 +5,58 @@
           <mat-icon>{{ navButton }}</mat-icon>
         </button>
       </span>
-    <mat-icon>security</mat-icon>
+    <mat-icon>{{ shopIcon }}</mat-icon>
   </div>
-  <h4 fxLayoutAlign="center">  
-    General Store
+  <h4 fxLayoutAlign="center">
+    <button mat-icon-button (click)="onRotateClick(false)">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    {{ shopName }}
+    <button mat-icon-button (click)="onRotateClick(true)">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
   </h4>
   <mat-divider [inset]="true"></mat-divider>
+
+  <!--<mat-toolbar color="accent" class="card-toolbar" fxLayout="row" fxLayoutAlign="space-between center">
+    General Store
+    <mat-form-field fxFlex="70%" fxFlex.md="60%" fxFlex.lt-md="40%">
+      <mat-icon id="search_prefix" matPrefix>search</mat-icon>
+      <input matInput (keyup)="applyFilter($event.target.value)">
+    </mat-form-field>
+  </mat-toolbar>-->
+
+  <mat-table class="table-content" [dataSource]="dataSource" fxFlex="auto" matSort>
+    <ng-container matColumnDef="name">
+      <mat-header-cell fxFlex="auto" *matHeaderCellDef mat-sort-header mat-sort-header.start="desc">Item Name</mat-header-cell>
+      <mat-cell fxFlex="auto" *matCellDef="let container">{{ container.item.name }}</mat-cell> 
+    </ng-container>
+
+    <ng-container matColumnDef="weight">
+      <mat-header-cell fxFlex="10%" fxFlex.md="12%" fxFlex.lt-md="15%" fxLayoutAlign="center center" *matHeaderCellDef mat-sort-header start="desc">Weight</mat-header-cell>
+      <mat-cell fxFlex="10%" fxFlex.md="12%" fxFlex.lt-md="15%" fxLayoutAlign="center center" *matCellDef="let container">{{ container.item.weight }}</mat-cell> 
+    </ng-container>
+    
+    <ng-container matColumnDef="amount">
+      <mat-header-cell fxFlex="10%" fxFlex.md="12%" fxFlex.lt-md="15%" fxLayoutAlign="center center" *matHeaderCellDef mat-sort-header start="desc">Amount</mat-header-cell>
+      <mat-cell fxFlex="10%" fxFlex.md="12%" fxFlex.lt-md="15%" fxLayoutAlign="center center" *matCellDef="let container">{{ container.amount }}</mat-cell> 
+    </ng-container>
+
+    <ng-container matColumnDef="cost">
+        <mat-header-cell fxFlex="10%" fxLayoutAlign="center center" *matHeaderCellDef mat-sort-header start="desc">Cost</mat-header-cell>
+        <mat-cell fxFlex="10%" fxLayoutAlign="center center" *matCellDef="let container">
+          <button mat-raised-button (click)="onBuyClick()" color="primary">
+            <mat-icon>attach_money</mat-icon> {{ container.item.cost }}
+          </button>
+        </mat-cell> 
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let container; columns: displayedColumns;" (click)="onClickItem(container)"></mat-row>
+    
+  </mat-table>
+  <mat-paginator class="table-content" [pageSizeOptions]="[9]" showFirstLastButtons></mat-paginator>
+
+
+
 </mat-card>

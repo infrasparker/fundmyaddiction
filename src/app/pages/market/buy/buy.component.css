@@ -2,3 +2,14 @@ span.button {
     right: 2em;
     position: absolute;
 }
+
+.table-content {
+    padding: 0% 2rem 0%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button.mat-icon-button {
+    height: 24px;
+    width: 24px;   
+}

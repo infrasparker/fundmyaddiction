@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Item } from '../../model/item/item.model';
 import { Weapon } from '../../model/item/weapon.model';
 import { Armor } from '../../model/item/armor.model';
@@ -8,6 +8,8 @@ import { Armor } from '../../model/item/armor.model';
 })
 export class InventoryService {
   private inventory: Map<string, ItemContainer>;
+
+  public updated: EventEmitter<InventoryService> = new EventEmitter<InventoryService>();
 
   constructor() {
     this.inventory = new Map();
@@ -31,6 +33,7 @@ export class InventoryService {
       this.inventory.get(item.key()).amount += amount;
     else
       this.inventory.set(item.key(), new ItemContainer(item, amount));
+    this.updated.emit(this);
   }
 
   public removeItem(item: Item, amount: number = 1): boolean {
@@ -42,9 +45,10 @@ export class InventoryService {
         this.inventory.get(item.key()).amount = newAmount;
       else
         this.inventory.delete(item.key());
+      this.updated.emit(this);
       return true;
     }
-  }
+  }  
 }
 
 export class ItemContainer {

@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { PlayerService } from '../player/player.service';
-import { Player } from '../player/player.model';
 
 @Component({
   selector: 'app-market',
@@ -9,12 +7,10 @@ import { Player } from '../player/player.model';
 })
 export class MarketComponent implements OnInit {
 
-  constructor() { 
+  constructor() { }
+
+  ngOnInit() {
+
   }
-
-  ngOnInit() {}
-
-  
-  
 
 }
