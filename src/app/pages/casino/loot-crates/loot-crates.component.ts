@@ -1,10 +1,12 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { InventoryService } from '../../../services/inventory/inventory.service'
+import { InventoryService, ItemContainer } from '../../../services/inventory/inventory.service'
 import { PlayerService } from '../../../services/player/player.service';
 import { Player } from '../../../model/player/player.model';
 import { Item } from '../../../model/item/item.model';
 import { Weapon } from '../../../model/item/weapon.model';
 import { Armor } from '../../../model/item/armor.model';
+import { ItemComponent } from '../../../model/item/item.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-loot-crates',
@@ -33,7 +35,8 @@ export class LootCratesComponent implements OnInit {
                     new Item("Crate 15", "Crate desc", 5, 5)] ]
 
 
-  constructor(private playerService: PlayerService, private inventoryService: InventoryService) { }
+
+  constructor(private playerService: PlayerService, private inventoryService: InventoryService, private dialog: MatDialog) { }
 
   onCrateClick(tier:number) {
     if (50 * tier > this.player.getCredits()) {
@@ -46,16 +49,19 @@ export class LootCratesComponent implements OnInit {
     this.inventoryService.addItem(items[rng[0]]);
     this.inventoryService.addItem(items[rng[1]]);
     this.inventoryService.addItem(items[rng[2]]);
-    items = [items[rng[0]], items[rng[1]], items[rng[2]]]
-    this.popUp(items);
+    let containers = [new ItemContainer(items[rng[0]], 1), new ItemContainer(items[rng[1]], 1), new ItemContainer(items[rng[2]], 1)];
+    this.popUp(containers);
   }
 
-  popUp(item: Item[]) {
-    const dialogRef = this.dialog.open(ItemComponent, {
-      width: '480px',
-      height: '600px',
-      data: container.item
-    });
+  popUp(containers: ItemContainer[]) {
+    for (let container of containers) {
+      const dialogRef = this.dialog.open(ItemComponent, {
+        width: '480px',
+        height: '600px',
+        data: container.item
+      });
+    }
+
   }
 
   ngOnInit() {
