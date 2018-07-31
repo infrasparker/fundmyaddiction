@@ -9,7 +9,7 @@ export class PlayerService {
   updated: EventEmitter<Player> = new EventEmitter<Player>();
 
   constructor() {
-    this.player = new Player("Roland Peone", 100);
+    this.player = new Player("Roland Peone", 1000);
   }
 
   addCredits(credits: number): void {

@@ -46,6 +46,7 @@ import { MembersComponent } from './pages/guild/members/members.component';
 import { MarketComponent } from './pages/market/market.component';
 import { BuyComponent } from './pages/market/buy/buy.component';
 import { SellComponent } from './pages/market/sell/sell.component';
+import { LootCratesComponent } from './pages/casino/loot-crates/loot-crates.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { SellComponent } from './pages/market/sell/sell.component';
     MembersComponent,
     MarketComponent,
     BuyComponent,
-    SellComponent
+    SellComponent,
+    LootCratesComponent
   ],
   imports: [
     BrowserModule,

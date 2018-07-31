@@ -1,0 +1,11 @@
+<mat-card fxFlexFill fxLayout="column" fxLayoutAlign="start center">
+  <h3>Loot Crates</h3>
+  <mat-divider [inset]="true" style="padding-bottom: 1em"></mat-divider>
+  <div fxLayout="column" fxLayoutGap="1em">
+    <button mat-raised-button (click)="onCrateClick(1)" color="primary">Tier 1 Crate<mat-icon>attach_money</mat-icon>50</button>
+    <button mat-raised-button (click)="onCrateClick(2)" color="primary">Tier 2 Crate<mat-icon>attach_money</mat-icon>100</button>
+    <button mat-raised-button (click)="onCrateClick(3)" color="accent">Tier 3 Crate<mat-icon>attach_money</mat-icon>150</button>
+  </div>
+  <br>
+  {{ errorMessage }}
+</mat-card>
