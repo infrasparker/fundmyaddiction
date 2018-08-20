@@ -19,19 +19,49 @@ export class Armor extends Item {
     }
 
     public quickInfoBox(): string {
-        return "<p>" + capitalize(this.armorType) + " " + this.slot + " armor" +
-        (this.stealthPenalty ? "<br>Disadvantage on Dexterity (Stealth) checks</p>" : "</p>") +
-        "<p><i>Armor Bonus:</i> " + this.armor + "</p>";
+        return "<p" + (this.stealthPenalty ? " class='br'" : "") + ">" + capitalize(this.armorType) + " " + this.slot + " armor</p>" +
+        (this.stealthPenalty ? "</p>Disadvantage on Dexterity (Stealth) checks</p>" : "") +
+        "<p class='br'><i>Armor Bonus:</i> " + this.armor + "</p>";
     }
 
     public static standard_armor(name: string): Armor {
         switch (name.toLowerCase()) {
-            case "padded" : return new Armor(
-                "Padded", "Gambeson, mostly used for dulling arrow and bolt impacts.", 10, 2,
+            case "gambeson chestpiece" : return new Armor(
+                "Gambeson chestpiece", "Gambeson, mostly used for dulling arrow and bolt impacts.", 500, 8,
                 1, ArmorType.Light, false, ArmorSlot.Torso
             );
-            default : throw "Unknown weapon";
+            case "leather chestpiece" : return new Armor(
+                "Leather Chestpiece", "A set of armor made with softer leather sheets, allowing a higher degree of movement.", 1000, 10,
+                2, ArmorType.Light, false, ArmorSlot.Torso
+            );
+            case "scale chestpiece" : return new Armor(
+                "Scale Chestpiece", "Armor made of small overlapping metal plates, usually backed by cloth or leather.", 5000, 45,
+                3, ArmorType.Medium, true, ArmorSlot.Torso
+            );
+            case "chain chestpiece" : return new Armor(
+                "Chain Shirt", "A shirt made of interlocking chains. Just make sure nobody aims for your limbs.", 5000, 20,
+                3, ArmorType.Heavy, true, ArmorSlot.Torso
+            );
+            case "plate chestpiece" : return new Armor(
+                "Plate Chestpiece", "A chestpiece made of solid metal plates.", 150000, 20,
+                4, ArmorType.Heavy, true, ArmorSlot.Torso
+            );
+            default : throw new Error("Unknown armor");
         }
+    }
+
+    public static armorType_max(a: ArmorType, b: ArmorType): ArmorType {
+        let type: ArmorType;
+        if (a === ArmorType.Light || b === ArmorType.Light) {
+            type = ArmorType.Light;
+        }
+        if (a === ArmorType.Medium || b === ArmorType.Medium) {
+            type = ArmorType.Medium;
+        }
+        if (a === ArmorType.Heavy || b === ArmorType.Heavy) {
+            type = ArmorType.Heavy;
+        }
+        return type;
     }
 }
 
@@ -46,6 +76,5 @@ export enum ArmorSlot {
 export enum ArmorType {
     Light = "light",
     Medium = "medium",
-    Heavy = "heavy",
-    Shield = "shield"
+    Heavy = "heavy"
 }

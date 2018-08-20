@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center">
-  <div fxFlex="55px">
+  <div fxFlex="4rem">
     <button mat-icon-button (click)="onMenuClick()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -8,7 +8,7 @@
     Fund My Addiction
   </div>
 
-  <div id="credits" fxLayoutAlign="right center">
+  <div fxLayoutAlign="right center">
     <mat-icon>attach_money</mat-icon>
     <div countUp [startVal]="player.getCredits()" [endVal]="endVal" [duration]=".75"></div>
   </div>

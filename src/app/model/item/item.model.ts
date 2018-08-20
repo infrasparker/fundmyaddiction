@@ -3,7 +3,6 @@ export class Item {
     public readonly description: string;
     public readonly cost: number;
     public readonly weight: number;
-    
 
     constructor(name: string, description: string, cost: number, weight: number) {
         this.name = name;

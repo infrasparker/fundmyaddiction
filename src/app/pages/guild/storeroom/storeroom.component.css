@@ -3,9 +3,7 @@ mat-card {
 }
 
 mat-toolbar {
-    padding: 1rem 2rem;
-    box-sizing: border-box;
-    height: 4em;
+    padding: 0rem 2rem;
 }
 
 #search_prefix {
@@ -16,11 +14,11 @@ mat-form-field {
     font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
 }
 
-.table-content {
+/* .table-content {
     padding: 0% 2rem 0%;
     width: 100%;
     box-sizing: border-box;
-}
+} */
 
 mat-row {
     height: 2.5rem;

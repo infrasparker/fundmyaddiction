@@ -10,7 +10,7 @@
 
     <mat-table class="table-content" [dataSource]="dataSource" fxFlex="auto" matSort>
       <ng-container matColumnDef="name">
-        <mat-header-cell fxFlex="auto" *matHeaderCellDef mat-sort-header mat-sort-header.start="desc">Item Name</mat-header-cell>
+        <mat-header-cell fxFlex="auto" *matHeaderCellDef mat-sort-header>Item Name</mat-header-cell>
         <mat-cell fxFlex="auto" *matCellDef="let container">{{ container.item.name }}</mat-cell> 
       </ng-container>
 

@@ -1,31 +1,36 @@
 #item-card-container {
-    border: 5px double black;
+    border: 3px solid #212121;
+}
+
+mat-divider {
+    background-color: black;
 }
 
 #details {
-    padding: .5rem 1rem;
-}
-
-#desc-title {
-    color: grey;
-    font-size: .6rem;
-    padding: 0rem .25rem;
+    padding: 1rem 1rem .5rem;
 }
 
 #desc-box {
     font-size: .8rem;
-    padding: .5rem 1rem 0rem;
+    flex-wrap: wrap;
+    overflow: hidden;
 }
 
 #info-box {
-    border: groove 3px grey;
+    border: solid 1px #212121;
     padding: 1rem;
     font-size: .8rem;
+    flex-wrap: wrap;
     text-align: center;
-    margin: 0rem 1rem;
+    display: inline-flex;
+    min-height: 25%;
 }
 
 #cost-weight-box {
     font-size: .8rem;
-    padding: .5rem .5rem 0rem;
+    padding: .5rem 0rem 0rem;
+}
+
+::ng-deep .br {
+    margin: 0px!important;
 }

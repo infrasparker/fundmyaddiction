@@ -14,7 +14,7 @@ export class InventoryService {
     this.addItem(new Item("Test 1", "Test desc", 5, 5), 5);
     this.addItem(new Item("Test 2", "Test desc", 5, 5), 10);
     this.addItem(new Item("Test 1", "Test desc", 5, 5), 20);
-    this.addItem(Armor.standard_armor("padded"));
+    this.addItem(Armor.standard_armor("gambeson chestpiece"));
     this.addItem(Weapon.standard_weapon("club"));
   }
 

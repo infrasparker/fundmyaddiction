@@ -2,14 +2,17 @@
   <mat-toolbar fxLayoutAlign="center center">{{ item.name }}</mat-toolbar>
   <div id="details" fxLayout="column" fxLayoutGap="1rem" fxFlex="auto">
     <div fxFlex="auto" fxLayout="column">
-      <div id="desc-title">Description</div>
-      <mat-divider></mat-divider>
+      <!-- <mat-divider></mat-divider> -->
       <div id="desc-box"
         [innerHTML]="item.descriptionBox()"
         fxLayout="column" fxLayoutAlign="start start">
       </div>
     </div>
-    <div id="info-box" *ngIf="item.quickInfoBox()" fxFlex="0 0 25%" [innerHTML]="item.quickInfoBox()" fxLayout="column" fxLayoutAlign="center center"></div>
+    <div id="info-box" *ngIf="item.quickInfoBox()"
+      [innerHTML]="item.quickInfoBox()"
+      fxLayout="column"
+      fxLayoutAlign="center center">
+    </div>
     <div fxFlex="nogrow">
       <mat-divider></mat-divider>
       <div id="cost-weight-box" fxLayout="row" fxLayoutAlign="space-between end">

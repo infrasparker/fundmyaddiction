@@ -9,3 +9,7 @@ export function bonus_toString(bonus: number, space_between: boolean): string {
         return (space_between ? "- " + bonus * -1 : bonus.toString());
     }
 }
+
+export function scoreToMod(score: number): number {
+    return Math.floor((score - 10) / 2);
+}

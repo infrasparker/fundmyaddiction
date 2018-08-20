@@ -1,6 +1,7 @@
 import { Item } from "./item.model";
 import { Dice } from "../mechanics/dice/dice.model";
 import { capitalize, bonus_toString } from "../functions/functions";
+import { DamageType } from "../mechanics/damage/damage.model";
 
 export class Weapon extends Item {
     public readonly rangeType: WeaponRangeType;
@@ -24,16 +25,16 @@ export class Weapon extends Item {
     }
 
     public quickInfoBox(): string {
-        let info: string = "<p>" + capitalize(this.weaponType) + " " + this.rangeType + " weapon" +
-        (this.finesse ? "<br>Finesse</p>": "</p>");
-        info += "<p><i>" + capitalize(this.rangeType) + " Weapon Attack:</i>";
+        let info: string = "<p" + (this.finesse ? " class='br'" : "") + ">" + capitalize(this.weaponType) + " " + this.rangeType + " weapon</p>" +
+        (this.finesse ? "<p>Finesse</p>": "");
+        info += "<p class='br'><i>" + capitalize(this.rangeType) + " Weapon Attack:</i>";
         if (this.bonus > 0) {
             info += " +" + this.bonus;
         } else if (this.bonus < 0) {
             info += " -" + this.bonus * -1;
         }
-        info += " + " + this.dex_str() + " + proficiency to hit<br>";
-        info += "<i>Hit:</i>";
+        info += " + " + this.dex_str() + " + proficiency to hit</p>";
+        info += "<p class='br'><i>Hit:</i>";
         this.damage.forEach((value: DamageInfo, key: DamageType) => {
             if (value.dice.amount === 0)
                 info += " 1";
@@ -73,7 +74,7 @@ export class Weapon extends Item {
                     [DamageType.Laceration, new DamageInfo(true, 1, 6)]
                 ])
             );
-            default : throw "Unknown weapon";
+            default : throw new Error("Unknown weapon");
         }
     }
 }
@@ -86,19 +87,6 @@ class DamageInfo {
         this.addMod = addMod;
         this.dice = new Dice(amount, faces);
     }
-}
-
-export enum DamageType {
-    Arcane = "arcane", // Pure magical energy
-    Bludgeoning = "bludgeoning", // Raw physical force
-    Corrosion = "corrosion", // Chemical deconstruction or alteration
-    Divine = "divine", // Borrowed from the heavens
-    Fire = "fire", // Intense heat
-    Frost = "frost", // Intense cold
-    Laceration = "laceration", // Stabs and slashes
-    Lightning = "lightning", // The power of electricity
-    Necrotic = "necrotic", // Corrupting ones identity
-    Toxic = "toxic", // Biotoxins, radiation, and synthetic poison alike
 }
 
 export enum WeaponRangeType {
